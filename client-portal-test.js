@@ -7,4 +7,4 @@ console.log("Hello world!");
         };
     };
     $(init);
-})();
+})(window.jQuery);
