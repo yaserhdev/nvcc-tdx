@@ -1,5 +1,3 @@
-console.log("Hello world!");
-console.log('Testing 123...');
 console.log('jQuery:', window.jQuery);
 
 
