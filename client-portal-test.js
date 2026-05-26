@@ -1,4 +1,5 @@
 console.log("Hello world!");
+console.log('jQuery:', window.jQuery);
 
 (function ($) {
     function init() {
