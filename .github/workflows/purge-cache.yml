@@ -1,0 +1,23 @@
+name: Purge jsDelivr Cache
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge jsDelivr cache for all repo files
+        run: |
+          curl -X POST https://purge.jsdelivr.net/ \
+            -H "Content-Type: application/json" \
+            -d '{
+              "path": [
+                "/gh/yaserhdev/nvcc-tdx@main/loader.js",
+                "/gh/yaserhdev/nvcc-tdx@main/main.js",
+                "/gh/yaserhdev/nvcc-tdx/loader.js",
+                "/gh/yaserhdev/nvcc-tdx/main.js"
+              ]
+            }'
