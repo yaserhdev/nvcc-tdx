@@ -21,3 +21,5 @@ jobs:
                 "/gh/yaserhdev/nvcc-tdx/main.js"
               ]
             }'
+            echo "Waiting for purge to propagate..."
+            sleep 30
