@@ -1,7 +1,8 @@
 (function () {
     if (
         window.location.pathname.toLowerCase() === '/sbtdclient/413/portal/1836/home-1' || 
-        window.location.pathname.toLowerCase() === '/sbtdclient/413/portal/home/'
+        window.location.pathname.toLowerCase() === '/sbtdclient/413/portal/home/' ||
+        window.location.pathname.toLowerCase() === 'sbtdclient/413/portal/1944/home-v3'
     ) {
         var searchBox = document.querySelector('div.pull-left.topLevelSearch.input-group');
         if (searchBox) searchBox.style.display = 'none'
