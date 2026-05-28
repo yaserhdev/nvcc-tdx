@@ -36,6 +36,6 @@
         }
 
         var style = document.createElement('style');
-        style.textContent = '.pull-right > .dropdown-menu { right: 5px !important; }';
+        style.textContent = '.pull-right > .dropdown-menu { right: 6px !important; }';
         document.head.appendChild(style);
 })();
