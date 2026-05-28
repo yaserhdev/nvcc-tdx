@@ -15,7 +15,7 @@
                 'gap: 6px',
                 'padding: 7px 16px',
                 'background: #046a38',
-                'color: #fff',
+                'color: #fff !important',
                 'font-weight: 600',
                 'font-size: 14px',
                 'border-radius: 6px',
