@@ -29,6 +29,10 @@
 
   // ── Form overlay ────────────────────────────────────────────────────────────
   window.nvccShowFormOverlay = function () {
+    // Guard against double-call (e.g. form-overlay.js + form-credit-course.js
+    // both triggering on the same page). Only one overlay at a time.
+    if (document.getElementById('nvcc-form-overlay')) return;
+
     var headerHeight = document.getElementById('divMstrHeader')
       ? document.getElementById('divMstrHeader').offsetHeight
       : 0;
@@ -58,8 +62,10 @@
     ].join('');
     document.body.appendChild(overlay);
 
-    var barEl = document.getElementById('nvcc-form-overlay-bar');
-    var pctEl = document.getElementById('nvcc-form-overlay-pct');
+    // Get elements from the overlay directly to avoid ID collision if
+    // appendChild hasn't flushed to DOM yet, or if called before body exists.
+    var barEl = overlay.querySelector('#nvcc-form-overlay-bar');
+    var pctEl = overlay.querySelector('#nvcc-form-overlay-pct');
     var displayedPct = 0, targetPct = 0, rafHandle = null;
     var intervalHandle = null, safetyTimeout = null;
 
@@ -122,5 +128,12 @@
 
   // Backward-compatible alias
   window.nvccShowUserDetailsOverlay = window.nvccShowFormOverlay;
+
+  // ─── LOTTINGEM TRACKER REMOVAL ─────────────────────────────────────────────
+  // TDX injects a lottingem.com tracking script on every page. Remove it before
+  // it fires. The domain currently fails to resolve but we remove it regardless.
+  document.querySelectorAll('script[src*="lottingem.com"]').forEach(function (s) {
+    if (s.parentNode) s.parentNode.removeChild(s);
+  });
 
 })();
